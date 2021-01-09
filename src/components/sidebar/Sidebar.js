@@ -41,20 +41,6 @@ const Sidebar = ({ setModal }) => {
         <SidebarChat name="Mahek" />
         <SidebarChat name="Adnan" />
         <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
-        <SidebarChat name="Afsha" />
       </div>
     </div>
   );

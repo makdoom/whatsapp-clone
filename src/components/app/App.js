@@ -3,6 +3,7 @@ import "./App.css";
 
 import Sidebar from "../sidebar/Sidebar";
 import AddModal from "../modal/AddModal";
+import Chat from "../chat/Chat";
 
 function App() {
   const [modalState, setModalState] = useState(false);
@@ -21,6 +22,7 @@ function App() {
       </div>
       <div className="app__body">
         <Sidebar setModal={setModal} />
+        <Chat />
       </div>
     </div>
   );

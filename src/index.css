@@ -9,6 +9,8 @@
   --drk-primary-background: #2a2f32;
   --drk-secondary-background: #131c21;
   --drk-font-color: #b1b3b5;
+  --drk-receiver-message: #262d31;
+  --drk-sender-message: #056162;
 }
 
 body {
