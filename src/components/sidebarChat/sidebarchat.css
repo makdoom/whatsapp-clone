@@ -22,7 +22,6 @@
 .sidebar__chat__info {
   margin-left: 1rem;
   flex: 1;
-  /* border-bottom: 0.1rem solid #525252; */
   border-bottom: 0.1rem solid var(--drk-primary-background);
   padding-bottom: 7px;
 }

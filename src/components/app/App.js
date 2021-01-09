@@ -6,10 +6,10 @@ import AddModal from "../modal/AddModal";
 
 function App() {
   const [modalState, setModalState] = useState(false);
+
   const setModal = () => {
     setModalState(!modalState);
   };
-
   const closeModal = () => {
     setModalState(!modalState);
   };
@@ -20,10 +20,7 @@ function App() {
         <AddModal closeModal={closeModal} />
       </div>
       <div className="app__body">
-        {/* <Sidebar component /> */}
         <Sidebar setModal={setModal} />
-
-        {/* <Chat Component /> */}
       </div>
     </div>
   );
