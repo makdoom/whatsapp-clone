@@ -35,7 +35,7 @@
 .sidebar__search {
   background: var(--drk-secondary-background);
   padding: 5px;
-  border-bottom: 0.1rem solid #525252;
+  border-bottom: 0.1rem solid var(--drk-primary-background);
 }
 
 .sidebar__search .search__box {
@@ -43,7 +43,7 @@
   border-radius: 40px;
   width: 90%;
   margin: auto;
-  padding: 5px 10px;
+  padding: 7px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,0 +1,58 @@
+.addModal {
+  width: 30%;
+  /* height: 150px; */
+  background-color: var(--drk-primary-background);
+  /* color: var(--drk-font-color); */
+  position: relative;
+  top: 50%;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.modal__header h2 {
+  margin: 20px;
+  font-weight: 500;
+}
+
+.modal__header .MuiIconButton-root {
+  color: var(--drk-font-color);
+  margin-right: 10px;
+}
+
+.modal__body {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.chat__input {
+  border: none;
+  outline: none;
+  background: var(--drk-secondary-background);
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  width: 75%;
+  color: var(--drk-font-color);
+  letter-spacing: 1px;
+}
+
+.modal__body .addChat {
+  padding: 10px 56px;
+  margin: 1rem 0 2rem 0;
+  border: none;
+  outline: none;
+  background: #25d366;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+}

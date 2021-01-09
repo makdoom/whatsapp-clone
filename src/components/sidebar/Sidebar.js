@@ -8,7 +8,7 @@ import "./sidebar.css";
 
 import SidebarChat from "../sidebarChat/SidebarChat";
 
-const Sidebar = () => {
+const Sidebar = ({ setModal }) => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -17,7 +17,7 @@ const Sidebar = () => {
           <IconButton>
             <Brightness7Icon className="darkmode__icon" />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={setModal}>
             <ChatIcon className="chat__icon" />
           </IconButton>
           <IconButton>
@@ -40,6 +40,20 @@ const Sidebar = () => {
         <SidebarChat name="Makdoom" />
         <SidebarChat name="Mahek" />
         <SidebarChat name="Adnan" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" />
         <SidebarChat name="Afsha" />
       </div>
     </div>

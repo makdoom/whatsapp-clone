@@ -8,3 +8,22 @@
   display: flex;
   height: 100%;
 }
+
+.modal__background {
+  opacity: 0;
+  background: rgba(20, 20, 20, 0.7);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal__showing__true {
+  opacity: 1;
+  pointer-events: visible;
+}
