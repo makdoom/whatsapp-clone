@@ -1,6 +1,9 @@
 import React from "react";
-import { Avatar } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import "./chat.css";
+import { InsertEmoticon } from "@material-ui/icons";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
+import MicIcon from "@material-ui/icons/Mic";
 
 const Chat = () => {
   return (
@@ -35,9 +38,22 @@ const Chat = () => {
           </span>
           <span className="chat__time">10:42 am</span>
         </p>
-        {/* <p className="chat__message">Heya gyuss</p> */}
       </div>
-      <div className="chat__footer"></div>
+      <div className="chat__footer">
+        <IconButton>
+          <InsertEmoticon />
+        </IconButton>
+        <IconButton>
+          <AttachFileIcon />
+        </IconButton>
+        <form>
+          <input type="text" placeholder="Type a message" />
+          <button type="submit">button</button>
+        </form>
+        <IconButton>
+          <MicIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };
