@@ -1,0 +1,39 @@
+.sidebar__chats {
+  background-color: var(--drk-secondary-background);
+  flex: 1;
+  overflow: auto;
+}
+
+.sidebar__chats .sidebar__chat {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar__chats .sidebar__chat:hover {
+  background-color: var(--drk-primary-background);
+}
+
+.sidebar__chat .avatar {
+  width: 45px;
+  height: 45px;
+}
+
+.sidebar__chat__info {
+  margin-left: 1rem;
+  flex: 1;
+  /* border-bottom: 0.1rem solid #525252; */
+  border-bottom: 0.1rem solid var(--drk-primary-background);
+  padding-bottom: 7px;
+}
+
+.sidebar__chat__info h3 {
+  color: #fff;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.sidebar__chat__info p {
+  color: var(--drk-font-color);
+  font-size: 0.9rem;
+}

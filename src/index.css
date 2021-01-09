@@ -15,3 +15,23 @@ body {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--drk-secondary-background);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--drk-primary-background);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

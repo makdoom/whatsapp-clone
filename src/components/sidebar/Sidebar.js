@@ -36,8 +36,11 @@ const Sidebar = () => {
           />
         </div>
       </div>
-      <div className="sidebar__chat">
-        <SidebarChat />
+      <div className="sidebar__chats">
+        <SidebarChat name="Makdoom" />
+        <SidebarChat name="Mahek" />
+        <SidebarChat name="Adnan" />
+        <SidebarChat name="Afsha" />
       </div>
     </div>
   );
