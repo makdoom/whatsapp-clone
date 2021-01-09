@@ -1,9 +1,10 @@
 .app {
   height: 100vh;
+  width: 100%;
 }
 
 .app__body {
-  background-color: #fff;
+  background-color: var(--drk-primary-background);
   display: flex;
   height: 100%;
 }

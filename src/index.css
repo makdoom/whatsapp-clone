@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --drk-primary-background: #2a2f32;
+  --drk-secondary-background: #131c21;
+  --drk-font-color: #b1b3b5;
+}
+
 body {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
