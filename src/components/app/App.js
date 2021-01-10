@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.css";
 
 import Sidebar from "../sidebar/Sidebar";
@@ -21,8 +23,18 @@ function App() {
         <AddModal closeModal={closeModal} />
       </div>
       <div className="app__body">
-        <Sidebar setModal={setModal} />
-        <Chat />
+        <Router>
+          <Sidebar setModal={setModal} />
+          <Switch>
+            <Route path="/chat/:chatId">
+              <Chat />
+            </Route>
+            <Route path="/">
+              {/* <Chat /> */}
+              {/* <h1>hello</h1> */}
+            </Route>
+          </Switch>
+        </Router>
       </div>
     </div>
   );

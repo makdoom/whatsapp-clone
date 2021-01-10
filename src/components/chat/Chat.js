@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Avatar, IconButton } from "@material-ui/core";
-import "./chat.css";
 import { InsertEmoticon } from "@material-ui/icons";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
+import "./chat.css";
+
+import db from "../../firebase/firebase";
 
 const Chat = () => {
+  const { chatId } = useParams();
+  const [chatName, setChatName] = useState("");
+
+  useEffect(() => {
+    if (chatId) {
+      db.collection("chats")
+        .doc(chatId)
+        .onSnapshot((snapshot) => setChatName(snapshot.data().name));
+    }
+  }, [chatId]);
   return (
     <div className="chat">
       <div className="chat__header">
         <Avatar
           className="avatar"
-          //   src={`https://ui-avatars.com/api/?name=${name}&length=1&background=random&bold=true`}
+          src={`https://ui-avatars.com/api/?name=${chatName}&length=1&background=random&bold=true`}
         />
         <div className="chat__headerInfo">
-          <h3>Room Name</h3>
+          <h3>{chatName}</h3>
           <p>Last seen at ...</p>
         </div>
       </div>

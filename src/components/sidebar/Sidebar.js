@@ -13,7 +13,7 @@ const Sidebar = ({ setModal }) => {
   const [chatNames, setChatNames] = useState([]);
 
   useEffect(() => {
-    db.collection("chats").onSnapshot((snapshot) =>
+    const unsubscribe = db.collection("chats").onSnapshot((snapshot) =>
       setChatNames(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -21,7 +21,12 @@ const Sidebar = ({ setModal }) => {
         }))
       )
     );
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebar__header">
