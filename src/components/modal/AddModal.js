@@ -3,12 +3,24 @@ import CloseIcon from "@material-ui/icons/Close";
 import { IconButton } from "@material-ui/core";
 import "./addModal.css";
 
+import db from "../../firebase/firebase";
+
 const AddModal = ({ closeModal }) => {
   const [chatInput, setChatInput] = useState("");
   const clearModal = () => {
     closeModal();
     setChatInput("");
   };
+
+  const createChat = () => {
+    if (chatInput === "") return;
+    // Add chat name into db
+    db.collection("chats").add({
+      name: chatInput,
+    });
+    clearModal();
+  };
+
   return (
     <div className="addModal">
       <div className="modal__header">
@@ -26,7 +38,9 @@ const AddModal = ({ closeModal }) => {
           onChange={(e) => setChatInput(e.target.value)}
         />
         <br />
-        <button className="addChat">Add</button>
+        <button className="addChat" onClick={createChat}>
+          Add
+        </button>
       </div>
     </div>
   );
