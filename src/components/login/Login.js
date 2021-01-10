@@ -9,9 +9,10 @@ const Login = () => {
   const signin = async () => {
     try {
       const response = await auth.signInWithPopup(provider);
+      console.log(response.additionalUserInfo.profile);
       setUser({
         loginStatus: true,
-        name: response.additionalUserInfo.profile.name,
+        name: response.additionalUserInfo.profile.given_name,
         email: response.additionalUserInfo.profile.email,
         profileURL: response.additionalUserInfo.profile.picture,
       });

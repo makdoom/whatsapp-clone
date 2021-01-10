@@ -6,7 +6,7 @@ import Sidebar from "../sidebar/Sidebar";
 import AddModal from "../modal/AddModal";
 import Chat from "../chat/Chat";
 import Login from "../login/Login";
-
+import Welcome from "../welcome/Welcome";
 import { UserContext } from "../../context/UserContext";
 
 function App() {
@@ -39,8 +39,7 @@ function App() {
                   <Chat />
                 </Route>
                 <Route path="/">
-                  {/* <Chat /> */}
-                  {/* <h1>hello</h1> */}
+                  <Welcome />
                 </Route>
               </Switch>
             </Router>
