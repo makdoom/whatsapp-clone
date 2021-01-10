@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -7,8 +7,21 @@ import SearchIcon from "@material-ui/icons/Search";
 import "./sidebar.css";
 
 import SidebarChat from "../sidebarChat/SidebarChat";
+import db from "../../firebase/firebase";
 
 const Sidebar = ({ setModal }) => {
+  const [chatNames, setChatNames] = useState([]);
+
+  useEffect(() => {
+    db.collection("chats").onSnapshot((snapshot) =>
+      setChatNames(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -37,10 +50,17 @@ const Sidebar = ({ setModal }) => {
         </div>
       </div>
       <div className="sidebar__chats">
-        <SidebarChat name="Makdoom" />
+        {chatNames.map((chatName) => (
+          <SidebarChat
+            key={chatName.id}
+            id={chatName.id}
+            name={chatName.data.name}
+          />
+        ))}
+        {/* <SidebarChat name="Makdoom" />
         <SidebarChat name="Mahek" />
         <SidebarChat name="Adnan" />
-        <SidebarChat name="Afsha" />
+        <SidebarChat name="Afsha" /> */}
       </div>
     </div>
   );

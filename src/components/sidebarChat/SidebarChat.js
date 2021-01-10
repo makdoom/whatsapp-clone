@@ -10,7 +10,7 @@ const SidebarChat = ({ name }) => {
         src={`https://ui-avatars.com/api/?name=${name}&length=1&background=random&bold=true`}
       />
       <div className="sidebar__chat__info">
-        <h3>Room Name</h3>
+        <h3>{name}</h3>
         <p>Last message</p>
       </div>
     </div>
