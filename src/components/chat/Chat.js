@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Avatar, IconButton } from "@material-ui/core";
 import { InsertEmoticon } from "@material-ui/icons";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
+import firebase from "firebase";
 import "./chat.css";
 
 import db from "../../firebase/firebase";
+import { UserContext } from "../../context/UserContext";
 
 const Chat = () => {
   const { chatId } = useParams();
   const [chatName, setChatName] = useState("");
+  const [inputMessage, setInputMessage] = useState("");
+  const { user } = useContext(UserContext);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     let unsubscribe;
@@ -19,11 +24,39 @@ const Chat = () => {
         .collection("chats")
         .doc(chatId)
         .onSnapshot((snapshot) => setChatName(snapshot.data().name));
+
+      db.collection("chats")
+        .doc(chatId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) => {
+          setMessages(snapshot.docs.map((doc) => doc.data()));
+        });
     }
     return () => {
       unsubscribe();
     };
   }, [chatId]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (inputMessage === "") return;
+
+    console.log({
+      name: user.name,
+      text: inputMessage,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    db.collection("chats").doc(chatId).collection("messages").add({
+      name: user.name,
+      text: inputMessage,
+      timestamp: new Date(),
+      // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    setInputMessage("");
+  };
+
+  console.log(messages);
   return (
     <div className="chat">
       <div className="chat__header">
@@ -37,25 +70,21 @@ const Chat = () => {
         </div>
       </div>
       <div className="chat__body">
-        <p className="chat__message">
-          <span className="chat__name">Makdoom Shaikh</span>
-          <span className="chat__text">heya gyuss wasssuppp</span>
-          <span className="chat__time">10:42 am</span>
-        </p>
-        <p className={`chat__message ${true && "chat__sender"}`}>
-          {true && <span className="chat__name">Makdoom Shaikh</span>}
-          <span className="chat__text">heya gyuss wasssuppp</span>
-          <span className="chat__time">10:42 am</span>
-        </p>
-        <p className="chat__message">
-          <span className="chat__name">Makdoom Shaikh</span>
-          <span className="chat__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-            voluptate corrupti voluptatibus quas, molestiae iure sapiente,
-            quidem maxime eius sint similique!
-          </span>
-          <span className="chat__time">10:42 am</span>
-        </p>
+        {messages.map((message) => (
+          <p
+            className={`chat__message ${
+              message.name === user.name && "chat__sender"
+            }`}
+          >
+            {message.name !== user.name && (
+              <span className="chat__name">{message.name}</span>
+            )}
+            <span className="chat__text">{message.text}</span>
+            <span className="chat__time">
+              {new Date(message.timestamp.seconds * 1000).toLocaleTimeString()}
+            </span>
+          </p>
+        ))}
       </div>
       <div className="chat__footer">
         <IconButton>
@@ -64,8 +93,13 @@ const Chat = () => {
         <IconButton>
           <AttachFileIcon />
         </IconButton>
-        <form>
-          <input type="text" placeholder="Type a message" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Type a message"
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+          />
           <button type="submit">button</button>
         </form>
         <IconButton>
