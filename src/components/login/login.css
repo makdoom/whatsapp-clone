@@ -1,0 +1,39 @@
+.login {
+  background-color: var(--drk-secondary-background);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.login__container {
+  background-color: var(--drk-primary-background);
+  border-radius: 20px;
+  box-shadow: 0 5px 18px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 3rem;
+}
+
+.login__container img {
+  height: 150px;
+}
+
+.login__container > h2 {
+  margin-top: 0.8rem;
+  letter-spacing: 1px;
+  color: #fff;
+  color: var(--drk-font-color);
+}
+
+.login__container > .login__user {
+  border: none;
+  outline: none;
+  padding: 12px 30px;
+  margin-top: 3rem;
+  background: var(--drk-sender-message);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}

@@ -13,11 +13,16 @@ const Chat = () => {
   const [chatName, setChatName] = useState("");
 
   useEffect(() => {
+    let unsubscribe;
     if (chatId) {
-      db.collection("chats")
+      unsubscribe = db
+        .collection("chats")
         .doc(chatId)
         .onSnapshot((snapshot) => setChatName(snapshot.data().name));
     }
+    return () => {
+      unsubscribe();
+    };
   }, [chatId]);
   return (
     <div className="chat">
