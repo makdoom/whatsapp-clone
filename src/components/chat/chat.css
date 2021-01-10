@@ -2,7 +2,6 @@
   flex: 0.7;
   display: flex;
   flex-direction: column;
-  border-left: 0.2px solid rgba(209, 212, 214, 0.2);
 }
 
 .chat__header {

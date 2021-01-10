@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -7,9 +7,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import "./sidebar.css";
 
 import SidebarChat from "../sidebarChat/SidebarChat";
+import { UserContext } from "../../context/UserContext";
 import db from "../../firebase/firebase";
 
 const Sidebar = ({ setModal }) => {
+  const { user } = useContext(UserContext);
   const [chatNames, setChatNames] = useState([]);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const Sidebar = ({ setModal }) => {
   return (
     <div className="sidebar">
       <div className="sidebar__header">
-        <Avatar className="avatar" />
+        <Avatar className="avatar" src={user?.profileURL} />
         <div className="sidebar__header__right">
           <IconButton>
             <Brightness7Icon className="darkmode__icon" />

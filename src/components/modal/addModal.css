@@ -28,6 +28,10 @@
   margin-right: 10px;
 }
 
+.modal__header .MuiIconButton-root:hover {
+  background-color: var(--drk-secondary-background);
+}
+
 .modal__body {
   text-align: center;
   margin-top: 1rem;
@@ -37,8 +41,8 @@
   border: none;
   outline: none;
   background: var(--drk-secondary-background);
-  padding: 10px 20px;
-  font-size: 1.1rem;
+  padding: 12px 20px;
+  font-size: 1rem;
   border-radius: 30px;
   width: 75%;
   color: var(--drk-font-color);
@@ -47,12 +51,13 @@
 
 .modal__body .addChat {
   padding: 10px 56px;
-  margin: 1rem 0 2rem 0;
+  margin: 1.5rem 0 2rem 0;
   border: none;
   outline: none;
-  background: #00af9c;
+  background: var(--drk-sender-message);
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 30px;
+  color: #fff;
   cursor: pointer;
 }

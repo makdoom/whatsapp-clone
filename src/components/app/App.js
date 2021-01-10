@@ -6,8 +6,8 @@ import Sidebar from "../sidebar/Sidebar";
 import AddModal from "../modal/AddModal";
 import Chat from "../chat/Chat";
 import Login from "../login/Login";
-import UserProvider from "../context/UserContext";
-import { UserContext } from "../context/UserContext";
+
+import { UserContext } from "../../context/UserContext";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -21,58 +21,34 @@ function App() {
     setModalState(!modalState);
   };
 
+  console.log("user", user);
   return (
-    <UserProvider>
-      <div className="app">
-        {!user.loginStatus ? (
-          <Login />
-        ) : (
-          <>
-            <div className={`modal__background modal__showing__${modalState}`}>
-              <AddModal closeModal={closeModal} />
-            </div>
-            <div className="app__body">
-              <Router>
-                <Sidebar setModal={setModal} />
-                <Switch>
-                  <Route path="/chat/:chatId">
-                    <Chat />
-                  </Route>
-                  <Route path="/">
-                    {/* <Chat /> */}
-                    {/* <h1>hello</h1> */}
-                  </Route>
-                </Switch>
-              </Router>
-            </div>
-          </>
-        )}
-      </div>
-    </UserProvider>
+    <div className="app">
+      {!user.loginStatus ? (
+        <Login />
+      ) : (
+        <>
+          <div className={`modal__background modal__showing__${modalState}`}>
+            <AddModal closeModal={closeModal} />
+          </div>
+          <div className="app__body">
+            <Router>
+              <Sidebar setModal={setModal} />
+              <Switch>
+                <Route path="/chat/:chatId">
+                  <Chat />
+                </Route>
+                <Route path="/">
+                  {/* <Chat /> */}
+                  {/* <h1>hello</h1> */}
+                </Route>
+              </Switch>
+            </Router>
+          </div>
+        </>
+      )}
+    </div>
   );
-  // return !user.loginStatus ? ():(
-  //   <UserProvider>
-  //     <div className="app">
-  //       <div className={`modal__background modal__showing__${modalState}`}>
-  //         <AddModal closeModal={closeModal} />
-  //       </div>
-  //       <div className="app__body">
-  //         <Router>
-  //           <Sidebar setModal={setModal} />
-  //           <Switch>
-  //             <Route path="/chat/:chatId">
-  //               <Chat />
-  //             </Route>
-  //             <Route path="/">
-  //               {/* <Chat /> */}
-  //               {/* <h1>hello</h1> */}
-  //             </Route>
-  //           </Switch>
-  //         </Router>
-  //       </div>
-  //     </div>
-  //   </UserProvider>
-  // );
 }
 
 export default App;

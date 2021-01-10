@@ -1,6 +1,6 @@
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN_USER":
+    case "SET_USER":
       return {
         ...state,
         user: action.payload,

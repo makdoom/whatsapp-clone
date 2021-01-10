@@ -6,7 +6,7 @@ import AppReducer from "./AppReducer";
 const initialState = {
   theme: "",
   user: {
-    loginStatus: "",
+    loginStatus: false,
     name: "",
     email: "",
     profileURL: "",
@@ -21,13 +21,17 @@ const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Login action
-  const loginUser = (data) => {
-    dispatch({ type: "LOGIN_USER", payload: data });
+  const setUser = (user) => {
+    dispatch({ type: "SET_USER", payload: user });
   };
 
   return (
     <UserContext.Provider
-      value={{ theme: state.theme, user: state.user, loginUser }}
+      value={{
+        theme: state.theme,
+        user: state.user,
+        setUser,
+      }}
     >
       {children}
     </UserContext.Provider>
