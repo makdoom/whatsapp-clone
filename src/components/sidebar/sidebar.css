@@ -39,13 +39,13 @@
 }
 
 .sidebar__search {
-  background: var(--drk-secondary-background);
   padding: 5px;
+  background-color: var(--drk-secondary-background);
   border-bottom: 0.1rem solid var(--drk-primary-background);
 }
 
 .sidebar__search .search__box {
-  background-color: var(--drk-primary-background);
+  background: var(--drk-primary-background);
   border-radius: 40px;
   width: 90%;
   margin: auto;

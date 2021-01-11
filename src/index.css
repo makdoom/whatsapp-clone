@@ -9,6 +9,7 @@
   --drk-primary-background: #2a2f32;
   --drk-secondary-background: #131c21;
   --drk-font-color: #b1b3b5;
+  --drk-font-default: #fff;
   --drk-receiver-message: #262d31;
   --drk-sender-message: #056162;
 }
@@ -39,4 +40,13 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.light__mode {
+  --drk-primary-background: #ededed;
+  --drk-secondary-background: #fff;
+  --drk-font-color: #2b2b2b;
+  --drk-font-default: #000;
+  --drk-receiver-message: #fff;
+  --drk-sender-message: #dcf8c6;
 }

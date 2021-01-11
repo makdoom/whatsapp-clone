@@ -34,8 +34,8 @@
 }
 
 .sidebar__chat__info h3 {
-  color: #fff;
-  font-weight: 400;
+  color: var(--drk-font-default);
+  font-weight: 500;
   padding-bottom: 5px;
 }
 
