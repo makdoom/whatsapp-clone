@@ -4,7 +4,6 @@ import { Avatar, IconButton } from "@material-ui/core";
 import { InsertEmoticon } from "@material-ui/icons";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
-import firebase from "firebase";
 import "./chat.css";
 
 import db from "../../firebase/firebase";
@@ -33,30 +32,29 @@ const Chat = () => {
           setMessages(snapshot.docs.map((doc) => doc.data()));
         });
     }
+
     return () => {
       unsubscribe();
     };
   }, [chatId]);
 
+  useEffect(() => {
+    let obj = document.querySelector(".chat__body");
+    obj.scrollTop = obj.scrollHeight;
+  }, [messages]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputMessage === "") return;
 
-    console.log({
-      name: user.name,
-      text: inputMessage,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
     db.collection("chats").doc(chatId).collection("messages").add({
       name: user.name,
       text: inputMessage,
       timestamp: new Date(),
-      // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInputMessage("");
   };
 
-  console.log(messages);
   return (
     <div className="chat">
       <div className="chat__header">
@@ -66,25 +64,38 @@ const Chat = () => {
         />
         <div className="chat__headerInfo">
           <h3>{chatName}</h3>
-          <p>Last seen at ...</p>
+          <p>
+            {messages.length === 0
+              ? ""
+              : `Last seen at ${new Date(
+                  messages[messages.length - 1]?.timestamp.seconds * 1000
+                ).toLocaleTimeString()}`}
+          </p>
         </div>
       </div>
       <div className="chat__body">
-        {messages.map((message) => (
-          <p
-            className={`chat__message ${
-              message.name === user.name && "chat__sender"
-            }`}
-          >
-            {message.name !== user.name && (
-              <span className="chat__name">{message.name}</span>
-            )}
-            <span className="chat__text">{message.text}</span>
-            <span className="chat__time">
-              {new Date(message.timestamp.seconds * 1000).toLocaleTimeString()}
-            </span>
-          </p>
-        ))}
+        {messages.length === 0 ? (
+          <p className="chat__body__initial">No messages</p>
+        ) : (
+          messages.map((message) => (
+            <p
+              key={message.timestamp.seconds}
+              className={`chat__message ${
+                message.name === user.name && "chat__sender"
+              }`}
+            >
+              {message.name !== user.name && (
+                <span className="chat__name">{message.name}</span>
+              )}
+              <span className="chat__text">{message.text}</span>
+              <span className="chat__time">
+                {new Date(
+                  message.timestamp.seconds * 1000
+                ).toLocaleTimeString()}
+              </span>
+            </p>
+          ))
+        )}
       </div>
       <div className="chat__footer">
         <IconButton>

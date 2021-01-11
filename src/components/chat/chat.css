@@ -22,6 +22,7 @@
 
 .chat__headerInfo p {
   color: var(--drk-font-color);
+  padding-top: 2px;
   font-size: 0.9rem;
 }
 
@@ -32,18 +33,29 @@
   padding: 25px;
 }
 
+.chat__body__initial {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--drk-font-color);
+}
+
 .chat__sender {
   margin-left: auto;
   background-color: var(--drk-sender-message) !important;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .chat__message {
   display: flex;
   flex-direction: column;
   position: relative;
-  font-size: 0.88rem;
+  font-size: 1rem;
   background-color: var(--drk-receiver-message);
   width: fit-content;
+  min-width: 6vw;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -51,16 +63,17 @@
   color: #fff;
   max-width: 35vw;
   letter-spacing: 0.5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .chat__name {
   color: lime;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
 }
 
 .chat__text {
   padding-bottom: 10px;
+  letter-spacing: 1px;
 }
 .chat__time {
   position: absolute;

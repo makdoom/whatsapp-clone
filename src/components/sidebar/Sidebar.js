@@ -29,6 +29,7 @@ const Sidebar = ({ setModal }) => {
     };
   }, []);
 
+  console.log(chatNames);
   return (
     <div className="sidebar">
       <div className="sidebar__header">
@@ -57,17 +58,30 @@ const Sidebar = ({ setModal }) => {
         </div>
       </div>
       <div className="sidebar__chats">
-        {chatNames.map((chatName) => (
-          <SidebarChat
+        {chatNames.length === 0 ? (
+          <p className="sidebar__chats__initial">
+            You don't have any rooms yet..!
+          </p>
+        ) : (
+          chatNames.map((chatName) => (
+            <SidebarChat
+              key={chatName.id}
+              id={chatName.id}
+              name={chatName.data.name}
+            />
+          ))
+        )}
+
+        {/* {!chatNames ? (
+          <h1>hello</h1>
+        ) : (
+          chatNames.map((chatName) => (<SidebarChat
             key={chatName.id}
             id={chatName.id}
             name={chatName.data.name}
           />
-        ))}
-        {/* <SidebarChat name="Makdoom" />
-        <SidebarChat name="Mahek" />
-        <SidebarChat name="Adnan" />
-        <SidebarChat name="Afsha" /> */}
+        )))
+        } */}
       </div>
     </div>
   );

@@ -19,6 +19,13 @@
   height: 45px;
 }
 
+.sidebar__chats__initial {
+  color: var(--drk-font-color);
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
 .sidebar__chat__info {
   margin-left: 1rem;
   flex: 1;
