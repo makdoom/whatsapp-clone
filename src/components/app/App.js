@@ -10,7 +10,7 @@ import Welcome from "../welcome/Welcome";
 import { UserContext } from "../../context/UserContext";
 
 function App() {
-  const { user } = useContext(UserContext);
+  const { user, darkTheme } = useContext(UserContext);
 
   const [modalState, setModalState] = useState(false);
 
@@ -23,7 +23,7 @@ function App() {
 
   console.log("user", user);
   return (
-    <div className="app light__mode">
+    <div className={`app ${!darkTheme && "light__mode"}`}>
       {!user.loginStatus ? (
         <Login />
       ) : (

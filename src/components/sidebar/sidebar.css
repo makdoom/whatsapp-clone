@@ -32,6 +32,7 @@
 .sidebar__header__right > .MuiIconButton-root,
 .sidebar__search .search__box > .MuiSvgIcon-root {
   color: var(--drk-font-color);
+  transition: all 0.4s ease-in-out;
 }
 
 .sidebar__header__right > .MuiIconButton-root:hover {
@@ -42,10 +43,12 @@
   padding: 5px;
   background-color: var(--drk-secondary-background);
   border-bottom: 0.1rem solid var(--drk-primary-background);
+  transition: all 0.4s ease-in-out;
 }
 
 .sidebar__search .search__box {
   background: var(--drk-primary-background);
+  transition: all 0.4s ease-in-out;
   border-radius: 40px;
   width: 90%;
   margin: auto;
@@ -62,6 +65,7 @@
   outline: none;
   color: var(--drk-font-color);
   margin-left: 1rem;
+  transition: all 0.4s ease-in-out;
   font-size: 0.9rem;
   letter-spacing: 0.6px;
 }

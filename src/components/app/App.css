@@ -5,13 +5,15 @@
 
 .app__body {
   background-color: var(--drk-primary-background);
+  transition: all 0.4s ease-in-out;
   display: flex;
   height: 100%;
 }
 
 .modal__background {
   opacity: 0;
-  background: rgba(20, 20, 20, 0.7);
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease-in-out;
   color: white;
   position: absolute;
   top: 0;

@@ -1,8 +1,7 @@
 .addModal {
   width: 30%;
-  /* height: 150px; */
-  background-color: var(--drk-primary-background);
-  /* color: var(--drk-font-color); */
+  background-color: var(--drk-secondary-background);
+  transition: all 0.4s ease-in-out;
   position: relative;
   top: 50%;
 
@@ -16,6 +15,7 @@
   align-items: center;
   justify-content: space-between;
   color: var(--drk-font-default);
+  transition: all 0.4s ease-in-out;
 }
 
 .modal__header h2 {
@@ -25,6 +25,7 @@
 
 .modal__header .MuiIconButton-root {
   color: var(--drk-font-color);
+  transition: all 0.4s ease-in-out;
   margin-right: 10px;
 }
 
@@ -40,12 +41,13 @@
 .chat__input {
   border: none;
   outline: none;
-  background: var(--drk-secondary-background);
+  background: var(--drk-primary-background);
   padding: 12px 20px;
   font-size: 1rem;
   border-radius: 30px;
   width: 75%;
   color: var(--drk-font-color);
+  transition: all 0.4s ease-in-out;
   letter-spacing: 1px;
 }
 

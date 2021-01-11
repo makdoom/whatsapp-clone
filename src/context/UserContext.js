@@ -4,7 +4,7 @@ import AppReducer from "./AppReducer";
 
 // Initial State
 const initialState = {
-  theme: "",
+  darkTheme: true,
   user: {
     loginStatus: false,
     name: "",
@@ -25,12 +25,19 @@ const UserProvider = ({ children }) => {
     dispatch({ type: "SET_USER", payload: user });
   };
 
+  // Theme toggle
+  const themeToggle = () => {
+    console.log("Theme changed");
+    dispatch({ type: "CHANGE_THEME" });
+  };
+
   return (
     <UserContext.Provider
       value={{
-        theme: state.theme,
+        darkTheme: state.darkTheme,
         user: state.user,
         setUser,
+        themeToggle,
       }}
     >
       {children}

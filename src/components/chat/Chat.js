@@ -4,6 +4,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import { InsertEmoticon } from "@material-ui/icons";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
+import randomColor from "randomcolor";
 import "./chat.css";
 
 import db from "../../firebase/firebase";
@@ -13,8 +14,9 @@ const Chat = () => {
   const { chatId } = useParams();
   const [chatName, setChatName] = useState("");
   const [inputMessage, setInputMessage] = useState("");
-  const { user } = useContext(UserContext);
+  const { user, darkTheme } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
+  const [colorCode, setColorCode] = useState("");
 
   useEffect(() => {
     let unsubscribe;
@@ -32,6 +34,7 @@ const Chat = () => {
           setMessages(snapshot.docs.map((doc) => doc.data()));
         });
     }
+    setColorCode(randomColor());
 
     return () => {
       unsubscribe();
@@ -52,6 +55,7 @@ const Chat = () => {
       text: inputMessage,
       timestamp: new Date(),
     });
+
     setInputMessage("");
   };
 
@@ -73,7 +77,7 @@ const Chat = () => {
           </p>
         </div>
       </div>
-      <div className="chat__body">
+      <div className={`chat__body ${darkTheme && "darkTheme"}`}>
         {messages.length === 0 ? (
           <p className="chat__body__initial">No messages</p>
         ) : (
@@ -85,7 +89,9 @@ const Chat = () => {
               }`}
             >
               {message.name !== user.name && (
-                <span className="chat__name">{message.name}</span>
+                <span className="chat__name" style={{ color: colorCode }}>
+                  {message.name}
+                </span>
               )}
               <span className="chat__text">{message.text}</span>
               <span className="chat__time">

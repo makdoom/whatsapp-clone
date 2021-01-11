@@ -1,5 +1,6 @@
 .sidebar__chats {
   background-color: var(--drk-secondary-background);
+  transition: all 0.4s ease-in-out;
   flex: 1;
   overflow: auto;
 }
@@ -21,6 +22,7 @@
 
 .sidebar__chats__initial {
   color: var(--drk-font-color);
+  transition: all 0.4s ease-in-out;
   text-align: center;
   font-size: 1rem;
   margin-top: 1.5rem;
@@ -30,16 +32,19 @@
   margin-left: 1rem;
   flex: 1;
   border-bottom: 0.1rem solid var(--drk-primary-background);
+  transition: all 0.4s ease-in-out;
   padding-bottom: 7px;
 }
 
 .sidebar__chat__info h3 {
   color: var(--drk-font-default);
+  transition: all 0.4s ease-in-out;
   font-weight: 500;
   padding-bottom: 5px;
 }
 
 .sidebar__chat__info p {
   color: var(--drk-font-color);
+  transition: all 0.4s ease-in-out;
   font-size: 0.9rem;
 }
