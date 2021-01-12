@@ -27,7 +27,6 @@ const UserProvider = ({ children }) => {
 
   // Theme toggle
   const themeToggle = () => {
-    console.log("Theme changed");
     dispatch({ type: "CHANGE_THEME" });
   };
 

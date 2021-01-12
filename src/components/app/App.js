@@ -21,7 +21,6 @@ function App() {
     setModalState(!modalState);
   };
 
-  console.log("user", user);
   return (
     <div className={`app ${!darkTheme && "light__mode"}`}>
       {!user.loginStatus ? (

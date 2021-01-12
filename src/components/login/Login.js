@@ -9,7 +9,6 @@ const Login = () => {
   const signin = async () => {
     try {
       const response = await auth.signInWithPopup(provider);
-      console.log(response.additionalUserInfo.profile);
       setUser({
         loginStatus: true,
         name: response.additionalUserInfo.profile.given_name,

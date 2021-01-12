@@ -30,7 +30,6 @@ const Sidebar = ({ setModal }) => {
     };
   }, []);
 
-  console.log(chatNames);
   return (
     <div className="sidebar">
       <div className="sidebar__header">
