@@ -111,6 +111,7 @@
   border: none;
   outline: none;
   padding: 12px 20px;
+  letter-spacing: 1px;
   background-color: var(--drk-secondary-background);
   transition: all 0.4s ease-in-out;
   font-size: 1rem;

@@ -7,8 +7,13 @@
 
 .sidebar__chats .sidebar__chat {
   display: flex;
-  padding: 10px;
+  padding: 5px 5px 0px 0px;
   cursor: pointer;
+}
+
+.is__active > .sidebar__chat {
+  background-color: var(--drk-primary-background);
+  transition: all 0.4s ease-in-out;
 }
 
 .sidebar__chats .sidebar__chat:hover {
@@ -17,6 +22,7 @@
 
 .sidebar__chat .avatar {
   width: 45px;
+  margin: 10px;
   height: 45px;
 }
 
@@ -29,11 +35,10 @@
 }
 
 .sidebar__chat__info {
-  margin-left: 1rem;
   flex: 1;
   border-bottom: 0.1rem solid var(--drk-primary-background);
   transition: all 0.4s ease-in-out;
-  padding-bottom: 7px;
+  padding: 11px;
 }
 
 .sidebar__chat__info h3 {

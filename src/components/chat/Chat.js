@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Avatar, IconButton } from "@material-ui/core";
 import { InsertEmoticon } from "@material-ui/icons";
@@ -11,12 +11,11 @@ import db from "../../firebase/firebase";
 import { UserContext } from "../../context/UserContext";
 
 const Chat = () => {
+  const inputRef = useRef("");
   const { chatId } = useParams();
   const [chatName, setChatName] = useState("");
-  const [inputMessage, setInputMessage] = useState("");
   const { user, darkTheme } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
-  const [colorCode, setColorCode] = useState("");
 
   useEffect(() => {
     let unsubscribe;
@@ -34,7 +33,6 @@ const Chat = () => {
           setMessages(snapshot.docs.map((doc) => doc.data()));
         });
     }
-    setColorCode(randomColor());
 
     return () => {
       unsubscribe();
@@ -48,15 +46,14 @@ const Chat = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (inputMessage === "") return;
+    if (inputRef === "") return;
 
     db.collection("chats").doc(chatId).collection("messages").add({
       name: user.name,
-      text: inputMessage,
+      text: inputRef.current.value,
       timestamp: new Date(),
     });
-
-    setInputMessage("");
+    inputRef.current.value = "";
   };
 
   return (
@@ -89,7 +86,12 @@ const Chat = () => {
               }`}
             >
               {message.name !== user.name && (
-                <span className="chat__name" style={{ color: colorCode }}>
+                <span
+                  className="chat__name"
+                  style={{
+                    color: randomColor(),
+                  }}
+                >
                   {message.name}
                 </span>
               )}
@@ -114,8 +116,9 @@ const Chat = () => {
           <input
             type="text"
             placeholder="Type a message"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
+            ref={inputRef}
+            // value={inputMessage}
+            // onChange={(e) => setInputMessage(e.target.value)}
           />
           <button type="submit">button</button>
         </form>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "./sidebarchat.css";
 
@@ -19,9 +19,8 @@ const SidebarChat = ({ name, id }) => {
     }
   }, [id]);
 
-  console.log(messages);
   return (
-    <Link to={`/chat/${id}`}>
+    <NavLink to={`/chat/${id}`} activeClassName="is__active">
       <div className="sidebar__chat">
         <Avatar
           className="avatar"
@@ -32,7 +31,7 @@ const SidebarChat = ({ name, id }) => {
           <p>{messages[0]?.text}</p>
         </div>
       </div>
-    </Link>
+    </NavLink>
   );
 };
 
